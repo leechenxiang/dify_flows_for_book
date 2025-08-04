@@ -1,0 +1,343 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 高德地图MCP-ChatFlow
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/tongyi:0.0.32@df193d705d8c19dbab56d4d4f310e336d8e555f6967dfdedaa7813f300f282f7
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables:
+  - description: ''
+    id: 9f2bf9d5-1138-4a0e-837f-deff907e04eb
+    name: weather
+    selector:
+    - conversation
+    - weather
+    value: ''
+    value_type: string
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: parameter-extractor
+      id: 1754192104037-source-1754192312114-target
+      selected: false
+      source: '1754192104037'
+      sourceHandle: source
+      target: '1754192312114'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: parameter-extractor
+        targetType: tool
+      id: 1754192312114-source-1754192323059-target
+      selected: false
+      source: '1754192312114'
+      sourceHandle: source
+      target: '1754192323059'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: code
+      id: 1754192323059-source-1754193513230-target
+      selected: false
+      source: '1754192323059'
+      sourceHandle: source
+      target: '1754193513230'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1754193513230-source-1754192455588-target
+      selected: false
+      source: '1754193513230'
+      sourceHandle: source
+      target: '1754192455588'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1754192455588-source-1754193565781-target
+      selected: false
+      source: '1754192455588'
+      sourceHandle: source
+      target: '1754193565781'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 54
+      id: '1754192104037'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        instruction: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: qwen-max
+          provider: langgenius/tongyi/tongyi
+        parameters:
+        - description: 城市名称
+          name: city
+          required: false
+          type: string
+        query:
+        - sys
+        - query
+        reasoning_mode: prompt
+        selected: false
+        title: 参数提取器
+        type: parameter-extractor
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1754192312114'
+      position:
+        x: 80
+        y: 414
+      positionAbsolute:
+        x: 80
+        y: 414
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: 城市名称或者adcode
+            ja_JP: 城市名称或者adcode
+            pt_BR: 城市名称或者adcode
+            zh_Hans: 城市名称或者adcode
+          label:
+            en_US: city
+            ja_JP: city
+            pt_BR: city
+            zh_Hans: city
+          llm_description: 城市名称或者adcode
+          max: null
+          min: null
+          name: city
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          city: ''
+        provider_id: gaode-mcp-server
+        provider_name: 高德MCP
+        provider_type: mcp
+        selected: false
+        title: maps_weather
+        tool_configurations: {}
+        tool_description: 根据城市名称或者标准adcode查询指定城市的天气
+        tool_label: maps_weather
+        tool_name: maps_weather
+        tool_parameters:
+          city:
+            type: mixed
+            value: '{{#1754192312114.city#}}'
+        type: tool
+        version: '2'
+      height: 86
+      id: '1754192323059'
+      position:
+        x: 80
+        y: 566.0159668927691
+      positionAbsolute:
+        x: 80
+        y: 566.0159668927691
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1754193513230'
+          - result
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: qwen-plus
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: 2ca045d4-acf1-4a9c-bee8-b9fb62366fb1
+          role: system
+          text: '【需求】
+
+            上下文是一个包含天气信息的JSON数据，根据上下文的内容，整理成一个正常的天气预报信息并且回复用户。
+
+
+            【上下文】
+
+            {{#context#}}'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1754192455588'
+      position:
+        x: 364.40912446649224
+        y: 414
+      positionAbsolute:
+        x: 364.40912446649224
+        y: 414
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "\nfunction main({str}) {\n    return {\n        result: JSON.stringify(str)\n\
+          \    }\n}\n"
+        code_language: javascript
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - '1754192323059'
+          - json
+          value_type: array[object]
+          variable: str
+      height: 54
+      id: '1754193513230'
+      position:
+        x: 364.40912446649224
+        y: 282
+      positionAbsolute:
+        x: 364.40912446649224
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1754192455588.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 104
+      id: '1754193565781'
+      position:
+        x: 364.40912446649224
+        y: 566.0159668927691
+      positionAbsolute:
+        x: 364.40912446649224
+        y: 566.0159668927691
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 419.61033523463465
+      y: -253.85340324739343
+      zoom: 1.1697715664770292

@@ -1,0 +1,206 @@
+app:
+  description: ''
+  icon: memo
+  icon_background: '#D3F8DF'
+  mode: advanced-chat
+  name: book.009 国际厨师专家-优雅风格化格式（Chatflow）
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/deepseek:0.0.5@fd6efd37c2a931911de8ab9ca3ba2da303bef146d45ee87ad896b04b36d09403
+kind: app
+version: 0.2.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: start
+        targetType: llm
+      id: 1749650625034-llm
+      source: '1749650625034'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: answer
+      id: llm-answer
+      source: llm
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 53
+      id: '1749650625034'
+      position:
+        x: 671
+        y: 72.4271452836511
+      positionAbsolute:
+        x: 671
+        y: 72.4271452836511
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-chat
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: edce9b72-7b2d-4a5f-97f8-2db1b9e0d9a4
+          role: system
+          text: '【角色】
+
+            你是一个专业的美食博主和经验丰富的知名国际厨师
+
+
+            【食材】
+
+            - 排骨
+
+            - 土豆
+
+            - 鸡腿
+
+            - 大蒜
+
+
+            【任务】
+
+            - 请根据提供的食材，制作一道美味佳肴
+
+            - 请为这到美味佳肴取一个好听的简端优雅的名字
+
+            - 请附上制作这道菜肴的介绍
+
+
+            【要求】
+
+            1. 你制作的菜肴要贴近百姓生活
+
+            2. 你制作的菜肴是人人都吃的起的
+
+            3. 你做的菜肴不能是米其林餐厅这种高档次的菜
+
+
+            【格式】
+
+            《标题》
+
+            1. 步骤1：......
+
+            2. 步骤2：......
+
+            3. 步骤3：......
+
+            .......
+
+            菜肴介绍：......
+
+            '
+        selected: true
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: llm
+      position:
+        x: 671
+        y: 183
+      positionAbsolute:
+        x: 671
+        y: 183
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#llm.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 104
+      id: answer
+      position:
+        x: 671
+        y: 305
+      positionAbsolute:
+        x: 671
+        y: 305
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -612.157908251725
+      y: 94.0550148223634
+      zoom: 1.3261764290690101

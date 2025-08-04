@@ -1,0 +1,317 @@
+app:
+  description: ''
+  icon: floppy_disk
+  icon_background: '#E0F2FE'
+  mode: advanced-chat
+  name: book.019 合并数据处理
+  use_icon_as_answer_icon: false
+dependencies: []
+kind: app
+version: 0.2.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1744510295057-true-1744510389357-target
+      source: '1744510295057'
+      sourceHandle: 'true'
+      target: '1744510389357'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1744510295057-038be122-8f35-483d-b7da-43b40a2c7396-17445104309670-target
+      source: '1744510295057'
+      sourceHandle: 038be122-8f35-483d-b7da-43b40a2c7396
+      target: '17445104309670'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1744510295057-false-17445104389090-target
+      source: '1744510295057'
+      sourceHandle: 'false'
+      target: '17445104389090'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 1744510389357-source-1744510529069-target
+      source: '1744510389357'
+      sourceHandle: source
+      target: '1744510529069'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 17445104309670-source-1744510529069-target
+      source: '17445104309670'
+      sourceHandle: source
+      target: '1744510529069'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 17445104389090-source-1744510529069-target
+      source: '17445104389090'
+      sourceHandle: source
+      target: '1744510529069'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: variable-aggregator
+        targetType: answer
+      id: 1744510529069-source-answer-target
+      source: '1744510529069'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1744509978866-source-1744510295057-target
+      source: '1744509978866'
+      sourceHandle: source
+      target: '1744510295057'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 53
+      id: '1744509978866'
+      position:
+        x: 380
+        y: 440.5909000648519
+      positionAbsolute:
+        x: 380
+        y: 440.5909000648519
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1744510529069.output#}}'
+        desc: ''
+        selected: true
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 104
+      id: answer
+      position:
+        x: 929.8850937907926
+        y: 600.364458175681
+      positionAbsolute:
+        x: 929.8850937907926
+        y: 600.364458175681
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 87dd57bf-22cb-49c1-ae9e-b7057e71495e
+            value: '1'
+            varType: string
+            variable_selector:
+            - sys
+            - query
+          id: 'true'
+          logical_operator: and
+        - case_id: 038be122-8f35-483d-b7da-43b40a2c7396
+          conditions:
+          - comparison_operator: is
+            id: 9089f78f-dab1-49f3-8013-6b28462d4a50
+            value: '0'
+            varType: string
+            variable_selector:
+            - sys
+            - query
+          id: 038be122-8f35-483d-b7da-43b40a2c7396
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 173
+      id: '1744510295057'
+      position:
+        x: 380
+        y: 526.757196457916
+      positionAbsolute:
+        x: 380
+        y: 526.757196457916
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: 男性
+        title: '模板转换 -1 '
+        type: template-transform
+        variables: []
+      height: 53
+      id: '1744510389357'
+      position:
+        x: 654.6349803289008
+        y: 473.92529307211373
+      positionAbsolute:
+        x: 654.6349803289008
+        y: 473.92529307211373
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: 女性
+        title: 模板转换 -2
+        type: template-transform
+        variables: []
+      height: 53
+      id: '17445104309670'
+      position:
+        x: 654.6349803289008
+        y: 557.7546201572972
+      positionAbsolute:
+        x: 654.6349803289008
+        y: 557.7546201572972
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: 未知
+        title: 模板转换 -3
+        type: template-transform
+        variables: []
+      height: 53
+      id: '17445104389090'
+      position:
+        x: 654.6349803289008
+        y: 641.7845153053325
+      positionAbsolute:
+        x: 654.6349803289008
+        y: 641.7845153053325
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        output_type: string
+        selected: false
+        title: 变量聚合器
+        type: variable-aggregator
+        variables:
+        - - '1744510389357'
+          - output
+        - - '17445104309670'
+          - output
+        - - '17445104389090'
+          - output
+      height: 152
+      id: '1744510529069'
+      position:
+        x: 929.8850937907926
+        y: 440.5909000648519
+      positionAbsolute:
+        x: 929.8850937907926
+        y: 440.5909000648519
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -181.3766938036988
+      y: -228.32028282643728
+      zoom: 0.9899685286848025

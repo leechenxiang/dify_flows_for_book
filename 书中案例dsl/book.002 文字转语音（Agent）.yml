@@ -1,0 +1,112 @@
+app:
+  description: ''
+  icon: alien
+  icon_background: '#FBE8FF'
+  mode: agent-chat
+  name: book.002 文字转语音（Agent）
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/deepseek:0.0.5@fd6efd37c2a931911de8ab9ca3ba2da303bef146d45ee87ad896b04b36d09403
+kind: app
+model_config:
+  agent_mode:
+    enabled: true
+    max_iteration: 5
+    prompt: null
+    strategy: function_call
+    tools:
+    - enabled: true
+      isDeleted: false
+      notAuthor: false
+      provider_id: audio
+      provider_name: audio
+      provider_type: builtin
+      tool_label: Text To Speech
+      tool_name: tts
+      tool_parameters:
+        model: langgenius/siliconflow/siliconflow#FunAudioLLM/CosyVoice2-0.5B
+        text: null
+        voice#langgenius/siliconflow/siliconflow#FunAudioLLM/CosyVoice2-0.5B: FunAudioLLM/CosyVoice2-0.5B:alex
+        voice#langgenius/siliconflow/siliconflow#RVC-Boss/GPT-SoVITS: RVC-Boss/GPT-SoVITS:alex
+        voice#langgenius/siliconflow/siliconflow#fishaudio/fish-speech-1.4: fishaudio/fish-speech-1.4:alex
+        voice#langgenius/siliconflow/siliconflow#fishaudio/fish-speech-1.5: fishaudio/fish-speech-1.5:alex
+        voice#langgenius/tongyi/tongyi#tts-1: null
+    - enabled: true
+      isDeleted: false
+      notAuthor: false
+      provider_id: time
+      provider_name: time
+      provider_type: builtin
+      tool_label: 获取当前时间
+      tool_name: current_time
+      tool_parameters:
+        format: ''
+        timezone: ''
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    reranking_enable: false
+    retrieval_model: multiple
+    top_k: 4
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    allowed_file_extensions:
+    - .JPG
+    - .JPEG
+    - .PNG
+    - .GIF
+    - .WEBP
+    - .SVG
+    - .MP4
+    - .MOV
+    - .MPEG
+    - .MPGA
+    allowed_file_types: []
+    allowed_file_upload_methods:
+    - remote_url
+    - local_file
+    enabled: false
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+    number_limits: 3
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: deepseek-chat
+    provider: langgenius/deepseek/deepseek
+  more_like_this:
+    enabled: false
+  opening_statement: ''
+  pre_prompt: 把用户输入的文字内容，转换为音频
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions: []
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form: []
+version: 0.2.0

@@ -1,0 +1,240 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: agent-chat
+  name: MCP-book-高德地图
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/tongyi:0.0.32@df193d705d8c19dbab56d4d4f310e336d8e555f6967dfdedaa7813f300f282f7
+kind: app
+model_config:
+  agent_mode:
+    enabled: true
+    max_iteration: 10
+    prompt: null
+    strategy: function_call
+    tools:
+    - enabled: true
+      notAuthor: false
+      provider_id: gaode-mcp-server
+      provider_name: 高德MCP
+      provider_type: mcp
+      tool_label: maps_direction_bicycling
+      tool_name: maps_direction_bicycling
+      tool_parameters:
+        destination: ''
+        origin: ''
+    - enabled: true
+      notAuthor: false
+      provider_id: gaode-mcp-server
+      provider_name: 高德MCP
+      provider_type: mcp
+      tool_label: maps_direction_driving
+      tool_name: maps_direction_driving
+      tool_parameters:
+        destination: ''
+        origin: ''
+    - enabled: true
+      notAuthor: false
+      provider_id: gaode-mcp-server
+      provider_name: 高德MCP
+      provider_type: mcp
+      tool_label: maps_direction_transit_integrated
+      tool_name: maps_direction_transit_integrated
+      tool_parameters:
+        city: ''
+        cityd: ''
+        destination: ''
+        origin: ''
+    - enabled: true
+      notAuthor: false
+      provider_id: gaode-mcp-server
+      provider_name: 高德MCP
+      provider_type: mcp
+      tool_label: maps_direction_walking
+      tool_name: maps_direction_walking
+      tool_parameters:
+        destination: ''
+        origin: ''
+    - enabled: true
+      notAuthor: false
+      provider_id: gaode-mcp-server
+      provider_name: 高德MCP
+      provider_type: mcp
+      tool_label: maps_distance
+      tool_name: maps_distance
+      tool_parameters:
+        destination: ''
+        origins: ''
+        type: ''
+    - enabled: true
+      notAuthor: false
+      provider_id: gaode-mcp-server
+      provider_name: 高德MCP
+      provider_type: mcp
+      tool_label: maps_geo
+      tool_name: maps_geo
+      tool_parameters:
+        address: ''
+        city: ''
+    - enabled: true
+      notAuthor: false
+      provider_id: gaode-mcp-server
+      provider_name: 高德MCP
+      provider_type: mcp
+      tool_label: maps_regeocode
+      tool_name: maps_regeocode
+      tool_parameters:
+        location: ''
+    - enabled: true
+      notAuthor: false
+      provider_id: gaode-mcp-server
+      provider_name: 高德MCP
+      provider_type: mcp
+      tool_label: maps_ip_location
+      tool_name: maps_ip_location
+      tool_parameters:
+        ip: ''
+    - enabled: true
+      notAuthor: false
+      provider_id: gaode-mcp-server
+      provider_name: 高德MCP
+      provider_type: mcp
+      tool_label: maps_schema_personal_map
+      tool_name: maps_schema_personal_map
+      tool_parameters:
+        lineList: ''
+        orgName: ''
+    - enabled: true
+      notAuthor: false
+      provider_id: gaode-mcp-server
+      provider_name: 高德MCP
+      provider_type: mcp
+      tool_label: maps_around_search
+      tool_name: maps_around_search
+      tool_parameters:
+        keywords: ''
+        location: ''
+        radius: ''
+    - enabled: true
+      notAuthor: false
+      provider_id: gaode-mcp-server
+      provider_name: 高德MCP
+      provider_type: mcp
+      tool_label: maps_search_detail
+      tool_name: maps_search_detail
+      tool_parameters:
+        id: ''
+    - enabled: true
+      notAuthor: false
+      provider_id: gaode-mcp-server
+      provider_name: 高德MCP
+      provider_type: mcp
+      tool_label: maps_text_search
+      tool_name: maps_text_search
+      tool_parameters:
+        city: ''
+        citylimit: ''
+        keywords: ''
+    - enabled: true
+      notAuthor: false
+      provider_id: gaode-mcp-server
+      provider_name: 高德MCP
+      provider_type: mcp
+      tool_label: maps_schema_navi
+      tool_name: maps_schema_navi
+      tool_parameters:
+        lat: ''
+        lon: ''
+    - enabled: true
+      notAuthor: false
+      provider_id: gaode-mcp-server
+      provider_name: 高德MCP
+      provider_type: mcp
+      tool_label: maps_schema_take_taxi
+      tool_name: maps_schema_take_taxi
+      tool_parameters:
+        dlat: ''
+        dlon: ''
+        dname: ''
+        slat: ''
+        slon: ''
+        sname: ''
+    - enabled: true
+      notAuthor: false
+      provider_id: gaode-mcp-server
+      provider_name: 高德MCP
+      provider_type: mcp
+      tool_label: maps_weather
+      tool_name: maps_weather
+      tool_parameters:
+        city: ''
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    reranking_enable: false
+    retrieval_model: multiple
+    top_k: 4
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    allowed_file_extensions:
+    - .JPG
+    - .JPEG
+    - .PNG
+    - .GIF
+    - .WEBP
+    - .SVG
+    - .MP4
+    - .MOV
+    - .MPEG
+    - .WEBM
+    allowed_file_types: []
+    allowed_file_upload_methods:
+    - remote_url
+    - local_file
+    enabled: false
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+    number_limits: 3
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: qwen-max
+    provider: langgenius/tongyi/tongyi
+  more_like_this:
+    enabled: false
+  opening_statement: ''
+  pre_prompt: ''
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions: []
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form: []
+version: 0.3.0

@@ -1,0 +1,168 @@
+app:
+  description: ''
+  icon: maple_leaf
+  icon_background: '#D5F5F6'
+  mode: advanced-chat
+  name: book.018 HTML优化数据输出
+  use_icon_as_answer_icon: false
+dependencies: []
+kind: app
+version: 0.2.0
+workflow:
+  conversation_variables:
+  - description: ''
+    id: bb1b3c14-362c-4e1f-af15-13bb41ce4e12
+    name: user
+    selector:
+    - conversation
+    - user
+    value:
+      age: 18
+      birthday: '2020-12-25'
+      name: 风间影月
+      sex: 男
+    value_type: object
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: template-transform
+        targetType: answer
+      id: 1744509120243-source-answer-target
+      source: '1744509120243'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: template-transform
+      id: 1744508753484-source-1744509120243-target
+      source: '1744508753484'
+      sourceHandle: source
+      target: '1744509120243'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 53
+      id: '1744508753484'
+      position:
+        x: 408.7514826049144
+        y: 241.74792435311997
+      positionAbsolute:
+        x: 408.7514826049144
+        y: 241.74792435311997
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1744509120243.output#}}'
+        desc: ''
+        selected: true
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 104
+      id: answer
+      position:
+        x: 408.7514826049144
+        y: 401.37117022734844
+      positionAbsolute:
+        x: 408.7514826049144
+        y: 401.37117022734844
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: '<font color=''green''>姓名：{{ user.name }}</font>
+
+          <font color=''blue''>年龄：{{ user.age }}</font>
+
+          <font color=''orange''>性别：{{ user.sex }}</font>
+
+          <font color=''red''>生日：{{ user.birthday }}</font>
+
+          '
+        title: 模板转换
+        type: template-transform
+        variables:
+        - value_selector:
+          - conversation
+          - user
+          variable: user
+      height: 53
+      id: '1744509120243'
+      position:
+        x: 408.7514826049144
+        y: 322.25207564688003
+      positionAbsolute:
+        x: 408.7514826049144
+        y: 322.25207564688003
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 324.10123302414127
+      y: -143.24475352426748
+      zoom: 1.391232603537567

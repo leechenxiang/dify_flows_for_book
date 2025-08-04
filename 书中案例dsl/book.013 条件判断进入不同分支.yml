@@ -1,0 +1,286 @@
+app:
+  description: ''
+  icon: chopsticks
+  icon_background: '#D5F5F6'
+  mode: advanced-chat
+  name: book.013 条件判断进入不同分支
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/tongyi:0.0.14@d333909fe8d75a335b44da4b878d5120779b8703f12c21cf4730135d6864afbb
+kind: app
+version: 0.2.0
+workflow:
+  conversation_variables:
+  - description: ''
+    id: 67cf7cb8-180b-4480-9f78-f8c1a6aa0ed5
+    name: default_age
+    selector:
+    - conversation
+    - default_age
+    value: 18
+    value_type: number
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1744092096194-true-answer-target
+      source: '1744092096194'
+      sourceHandle: 'true'
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1744092096194-false-17440926473090-target
+      source: '1744092096194'
+      sourceHandle: 'false'
+      target: '17440926473090'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: llm
+      id: 1744092056079-source-1751001642631-target
+      source: '1744092056079'
+      sourceHandle: source
+      target: '1751001642631'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: if-else
+      id: 1751001642631-source-1744092096194-target
+      source: '1751001642631'
+      sourceHandle: source
+      target: '1744092096194'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1744092096194-4816ec63-3387-4265-8f65-1ecb90b64cab-1744092120358-target
+      source: '1744092096194'
+      sourceHandle: 4816ec63-3387-4265-8f65-1ecb90b64cab
+      target: '1744092120358'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 53
+      id: '1744092056079'
+      position:
+        x: -17.828499383703218
+        y: 274.4747308166382
+      positionAbsolute:
+        x: -17.828499383703218
+        y: 274.4747308166382
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: <font color="green">男性</font>
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 101
+      id: answer
+      position:
+        x: 545.3992338788706
+        y: 274.4747308166382
+      positionAbsolute:
+        x: 545.3992338788706
+        y: 274.4747308166382
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 3d62a7ea-2c99-4102-a993-c02bda204f3a
+            value: 男
+            varType: string
+            variable_selector:
+            - '1751001642631'
+            - text
+          id: 'true'
+          logical_operator: or
+        - case_id: 4816ec63-3387-4265-8f65-1ecb90b64cab
+          conditions:
+          - comparison_operator: is
+            id: 15aa2c3a-956e-48a7-8c59-3e8a357897c8
+            value: 女
+            varType: string
+            variable_selector:
+            - '1751001642631'
+            - text
+          id: 4816ec63-3387-4265-8f65-1ecb90b64cab
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 173
+      id: '1744092096194'
+      position:
+        x: 262.19786995318697
+        y: 274.4747308166382
+      positionAbsolute:
+        x: 262.19786995318697
+        y: 274.4747308166382
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: <font color="red">女性</font>
+        desc: ''
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 101
+      id: '1744092120358'
+      position:
+        x: 545.3992338788706
+        y: 384.9926902547287
+      positionAbsolute:
+        x: 545.3992338788706
+        y: 384.9926902547287
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: <font color="blue">不知道</font>
+        desc: ''
+        selected: false
+        title: 直接回复 2 (1)
+        type: answer
+        variables: []
+      height: 101
+      id: '17440926473090'
+      position:
+        x: 545.3992338788706
+        y: 495.5814976114459
+      positionAbsolute:
+        x: 545.3992338788706
+        y: 495.5814976114459
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: qwen-max
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: 6e1103bb-983e-4e2d-8225-f6d2426fe40b
+          role: system
+          text: '生成一个随机性别，这个性别可以是“女”、“男”或者“未知”。
+
+            不要输出任何自然语言的内容。'
+        selected: false
+        structured_output_enabled: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1751001642631'
+      position:
+        x: -17.828499383703218
+        y: 379.82433004688636
+      positionAbsolute:
+        x: -17.828499383703218
+        y: 379.82433004688636
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 53.31019993407176
+      y: -79.33641352768427
+      zoom: 1.1959705069286841

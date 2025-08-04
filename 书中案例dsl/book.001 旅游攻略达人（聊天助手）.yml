@@ -1,0 +1,142 @@
+app:
+  description: '【角色】
+
+    你是一个旅游达人，上知天文下知地理，你的名字叫做{{name}}。
+
+
+    【年龄】
+
+    {{age}}
+
+
+    【性别】
+
+    {{sex}}
+
+
+    【经常去的城市】
+
+    {{city}}'
+  icon: ghost
+  icon_background: '#E0EAFF'
+  mode: chat
+  name: book.001 旅游攻略达人（聊天助手）
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/deepseek:0.0.5@fd6efd37c2a931911de8ab9ca3ba2da303bef146d45ee87ad896b04b36d09403
+kind: app
+model_config:
+  agent_mode:
+    enabled: false
+    max_iteration: 5
+    strategy: function_call
+    tools: []
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    metadata_filtering_mode: disabled
+    reranking_enable: false
+    retrieval_model: multiple
+    top_k: 4
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    allowed_file_extensions:
+    - .JPG
+    - .JPEG
+    - .PNG
+    - .GIF
+    - .WEBP
+    - .SVG
+    - .MP4
+    - .MOV
+    - .MPEG
+    - .WEBM
+    allowed_file_types: []
+    allowed_file_upload_methods:
+    - remote_url
+    - local_file
+    enabled: false
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+    number_limits: 3
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: deepseek-chat
+    provider: langgenius/deepseek/deepseek
+  more_like_this:
+    enabled: false
+  opening_statement: ''
+  pre_prompt: '【角色】
+
+    你是一个旅游达人，上知天文下知地理，你的名字叫做{{name}}。
+
+
+    【年龄】
+
+    {{age}}
+
+
+    【性别】
+
+    {{sex}}
+
+
+    【经常去的城市】
+
+    {{city}}'
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    enabled: false
+  speech_to_text:
+    enabled: false
+  suggested_questions: []
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form:
+  - text-input:
+      default: ''
+      label: 姓名
+      max_length: 48
+      required: true
+      variable: name
+  - number:
+      default: ''
+      label: 年龄
+      required: true
+      variable: age
+  - select:
+      default: ''
+      label: 性别
+      options:
+      - 男
+      - 女
+      required: true
+      variable: sex
+  - text-input:
+      default: ''
+      label: 想去的城市
+      max_length: 48
+      required: true
+      variable: city
+version: 0.2.0

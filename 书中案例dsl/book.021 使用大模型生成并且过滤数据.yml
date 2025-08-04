@@ -1,0 +1,181 @@
+app:
+  description: ''
+  icon: wrench
+  icon_background: '#D1E9FF'
+  mode: advanced-chat
+  name: book.021 使用大模型生成并且过滤数据
+  use_icon_as_answer_icon: false
+dependencies: []
+kind: app
+version: 0.2.0
+workflow:
+  conversation_variables:
+  - description: ''
+    id: c4363148-af5d-4338-a386-8ba012853d1a
+    name: list
+    selector:
+    - conversation
+    - list
+    value:
+    - 100
+    - 20
+    - 30
+    - 16
+    - 88
+    - 19
+    - 99
+    - 65
+    - 43
+    - 71
+    value_type: array[number]
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: list-operator
+      id: 1744680348658-source-1744680364065-target
+      source: '1744680348658'
+      sourceHandle: source
+      target: '1744680364065'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: list-operator
+        targetType: answer
+      id: 1744680364065-source-answer-target
+      source: '1744680364065'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 53
+      id: '1744680348658'
+      position:
+        x: 368.97062103145026
+        y: 191.62826761204366
+      positionAbsolute:
+        x: 368.97062103145026
+        y: 191.62826761204366
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1744680364065.result#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 104
+      id: answer
+      position:
+        x: 368.97062103145026
+        y: 399.4832521043433
+      positionAbsolute:
+        x: 368.97062103145026
+        y: 399.4832521043433
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        extract_by:
+          enabled: false
+          serial: '1'
+        filter_by:
+          conditions:
+          - comparison_operator: ≥
+            key: ''
+            value: '66'
+          enabled: true
+        item_var_type: number
+        limit:
+          enabled: true
+          size: 3
+        order_by:
+          enabled: true
+          key: ''
+          value: desc
+        selected: false
+        title: 列表操作
+        type: list-operator
+        var_type: array[number]
+        variable:
+        - conversation
+        - list
+      height: 91
+      id: '1744680364065'
+      position:
+        x: 373.22565155176414
+        y: 282
+      positionAbsolute:
+        x: 373.22565155176414
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 424.5652304987161
+      y: -54.00151248557211
+      zoom: 1.3278488397771617
